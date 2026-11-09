@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamitech 5 - XII F5 SMAN 1 Purwakarta</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#131c31',
+                            900: '#090d16',
+                        },
+                        cyan: {
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #090d16;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(19, 28, 49, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+        }
+
+        .glass-panel:active {
+            box-shadow: 0 0 40px rgba(14, 165, 233, 0.8);
+            transform: scale(0.98);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
+
+        /* Animasi Floating / Melayang */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Animasi Teks Berjalan (Marquee) Slogan Baru */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: rgba(14, 165, 233, 0.1);
+            border-top: 1px solid rgba(56, 189, 248, 0.2);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 8px 0;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 24s linear infinite;
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Struktur Organisasi Kelas */
+        .tree ul {
+            padding-top: 20px; 
+            position: relative;
+            transition: all 0.5s;
+            display: flex; 
+            justify-content: center;
+        }
+        .tree li {
+            float: left; 
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+        }
+        .tree li::before, .tree li::after {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            right: 50%;
+            border-top: 2px solid #38bdf8;
+            width: 50%; 
+            height: 20px;
+        }
+        .tree li::after { 
+            right: auto; 
+            left: 50%; 
+            border-left: 2px solid #38bdf8; 
+        }
+        .tree li:only-child::after, .tree li:only-child::before { display: none; }
+        .tree li:only-child { padding-top: 0; }
+        .tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+        .tree li:last-child::before { border-right: 2px solid #38bdf8; border-radius: 0 5px 0 0; }
+        .tree li:first-child::after { border-radius: 5px 0 0 0; }
+        .tree ul ul::before {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 50%;
+            border-left: 2px solid #38bdf8;
+            width: 0; 
+            height: 20px;
+        }
+        .org-box {
+            background: rgba(19, 28, 49, 0.9);
+            border: 1px solid #38bdf8;
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+            min-width: 150px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .org-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-cyan-500/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-600 to-purple-600 flex items-center justify-center font-bold text-xl shadow-[0_0_15px_rgba(56,189,248,0.6)] animate-pulse animate-float">
+                        D5
+                    </div>
+                    <span class="font-bold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">DYNAMITECH 5</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#home" class="hover:text-cyan-400 text-white px-3 py-2 rounded-md text-sm font-semibold transition-colors">HOME</a>
+                        <a href="#struktur" class="hover:text-cyan-400 text-gray-300 px-3 py-2 rounded-md text-sm font-semibold transition-colors">STRUKTUR</a>
+                        <a href="#anggota" class="hover:text-cyan-400 text-gray-300 px-3 py-2 rounded-md text-sm font-semibold transition-colors">ANGGOTA</a>
+                        <a href="#galeri" class="hover:text-cyan-400 text-gray-300 px-3 py-2 rounded-md text-sm font-semibold transition-colors">GALLERY</a>
+                        <a href="#pesan" class="hover:text-cyan-400 text-gray-300 px-3 py-2 rounded-md text-sm font-semibold transition-colors">BUKU KESAN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Teks Berjalan (Marquee) Slogan Baru -->
+    <div class="relative top-20 z-40 marquee-container shadow-md">
+        <div class="marquee-text">
+            🔥 POWER IN FIVE, IMPACT IN ONE — DYNAMITECH 5 XII F5 SMAN 1 PURWAKARTA ✨ SATU TEKAD, SATU TUJUAN, SUKSES BARENG SAMPAI LULUS! 🚀
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-40 pb-24 lg:pt-52 lg:pb-36 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="FOTO/bgkelas.jpg" alt="Dynamitech 5" class="w-full h-full object-cover opacity-55 scale-100 transition-transform duration-1000 hover:scale-105" onerror="this.src='https://via.placeholder.com/1920x1080/090d16/38bdf8?text=Dynamitech+5+SMAN+1+PWK'">
+            <div class="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/75 to-navy-900"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-semibold tracking-widest uppercase shadow-[0_0_15px_rgba(56,189,248,0.2)] animate-float">
+                Power in Five, Impact in One
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                WELCOME TO <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 text-5xl md:text-7xl glow-text">DYNAMITECH 5</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-300 font-light italic">
+                "Setiap langkah adalah petualangan. Raih impian, ukir prestasi bersama!"
+            </p>
+            <p class="mt-2 text-sm text-cyan-400 font-semibold tracking-wider">XII F5 — SMAN 1 PURWAKARTA</p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#galeri" class="px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-navy-900 font-bold hover:shadow-[0_0_25px_rgba(14,165,233,0.8)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                    Explore Gallery
+                </a>
+                <a href="#pesan" class="px-8 py-3 rounded-xl glass-panel text-cyan-400 font-bold hover:bg-cyan-500/10 transition-all duration-300 transform hover:-translate-y-1 active:scale-95">
+                    Tulis Kesan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Struktur Kelas Section -->
+    <section id="struktur" class="py-20 bg-navy-800/50 border-y border-cyan-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">STRUKTUR KELAS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="tree flex justify-center overflow-x-auto pb-10">
+                <ul>
+                    <li>
+                        <div class="org-box animate-float">
+                            <h3 class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Wali Kelas</h3>
+                            <p class="font-semibold text-sm">Mr. Agung</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="org-box border-blue-400">
+                                    <h3 class="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Ketua Murid</h3>
+                                    <p class="font-semibold text-sm">Muhammad Jovan Aditya</p>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="org-box border-blue-400">
+                                            <h3 class="text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Wakil Ketua</h3>
+                                            <p class="font-semibold text-sm">Rizky Anugrah</p>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <div class="org-box border-pink-400">
+                                                    <h3 class="text-pink-400 text-xs font-bold uppercase tracking-wider mb-1">Sekretaris 1</h3>
+                                                    <p class="font-semibold text-sm whitespace-nowrap">Syifa An Naafi Fawwaz A.</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="org-box border-pink-400">
+                                                    <h3 class="text-pink-400 text-xs font-bold uppercase tracking-wider mb-1">Sekretaris 2</h3>
+                                                    <p class="font-semibold text-sm whitespace-nowrap">Pramudya Satya Aqilla</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="org-box border-green-400">
+                                                    <h3 class="text-green-400 text-xs font-bold uppercase tracking-wider mb-1">Bendahara 1</h3>
+                                                    <p class="font-semibold text-sm whitespace-nowrap">Ghaesan Arreiko Gani</p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="org-box border-green-400">
+                                                    <h3 class="text-green-400 text-xs font-bold uppercase tracking-wider mb-1">Bendahara 2</h3>
+                                                    <p class="font-semibold text-sm whitespace-nowrap">Lestari Desiani</p>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anggota Kelas Section -->
+    <section id="anggota" class="py-20 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">ANGGOTA KELAS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-400 max-w-2xl mx-auto">Daftar lengkap 36 siswa-siswi hebat pengukir memori Dynamitech 5. Klik username IG untuk berkunjung!</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" id="members-container">
+                <!-- Data siswa -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Slider Section -->
+    <section id="galeri" class="py-20 bg-navy-800/40">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">GALLERY MEMORIES</h2>
+                    <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full mb-4"></div>
+                    <p class="text-gray-400">Geser atau gunakan tombol untuk melihat momen seru kelas kita.</p>
+                </div>
+                <button onclick="document.getElementById('uploadModal').classList.remove('hidden')" class="mt-6 md:mt-0 px-6 py-2.5 bg-cyan-500/10 border border-cyan-500 text-cyan-400 rounded-xl hover:bg-cyan-500 hover:text-navy-900 transition font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(14,165,233,0.2)] transform hover:scale-105 active:scale-95">
+                    <i class="fas fa-plus"></i> Tambah Foto
+                </button>
+            </div>
+
+            <div class="relative glass-panel rounded-3xl p-4 md:p-8 border border-cyan-500/30 shadow-2xl overflow-hidden">
+                <div id="empty-gallery-msg" class="text-center py-12 hidden">
+                    <p class="text-gray-400 mb-2">Belum ada foto di galeri kelas.</p>
+                    <p class="text-xs text-cyan-400">Klik tombol "Tambah Foto" di atas untuk mulai memasukkan foto memori!</p>
+                </div>
+
+                <div class="relative h-[350px] sm:h-[450px] md:h-[520px] flex items-center justify-center overflow-hidden rounded-2xl bg-navy-900" id="slider-screen">
+                    <!-- Slider Screen -->
+                </div>
+
+                <button onclick="prevSlide()" class="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-navy-900/90 border border-cyan-500/50 text-cyan-400 flex items-center justify-center hover:bg-cyan-500 hover:text-navy-900 transition shadow-lg z-20 active:scale-90">
+                    <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+                <button onclick="nextSlide()" class="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-navy-900/90 border border-cyan-500/50 text-cyan-400 flex items-center justify-center hover:bg-cyan-500 hover:text-navy-900 transition shadow-lg z-20 active:scale-90">
+                    <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+
+                <div class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
+                    <div class="flex items-center gap-2 overflow-x-auto max-w-full px-2 py-1" id="slider-dots">
+                        <!-- Dots -->
+                    </div>
+                    <button onclick="deleteCurrentPhoto()" class="px-4 py-2 bg-red-500/10 border border-red-500/50 text-red-400 rounded-xl hover:bg-red-500 hover:text-white transition text-xs font-bold flex items-center gap-2 active:scale-95">
+                        <i class="fas fa-trash"></i> Hapus Foto Ini
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buku Kesan / Guestbook Section -->
+    <section id="pesan" class="py-20 bg-navy-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">BUKU KESAN KELAS</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-gray-400">Tuliskan pesan, kesan, atau kata-kata mutiara kalian untuk Dynamitech 5.</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-2xl mb-10 border border-cyan-500/30 shadow-xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <input type="text" id="guestName" placeholder="Nama Kamu / Absen" class="bg-navy-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm">
+                </div>
+                <textarea id="guestMsg" rows="3" placeholder="Tulis kesan atau pesan singkat di sini..." class="w-full bg-navy-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm mb-4 resize-none"></textarea>
+                <button onclick="addGuestMessage()" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-navy-900 font-bold rounded-xl hover:opacity-95 transition shadow-[0_0_15px_rgba(14,165,233,0.4)] active:scale-95">
+                    Kirim Pesan
+                </button>
+            </div>
+
+            <div class="space-y-4" id="guestbook-container">
+                <!-- Pesan masuk -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-900 py-10 border-t border-cyan-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400 mb-2">DYNAMITECH 5 - XII F5</h3>
+            <p class="text-gray-400 text-sm mb-6">"Di SMA kita belajar lebih dari keterampilan — kita belajar tentang hidup."</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-xl transform hover:scale-125"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-cyan-400 transition text-xl transform hover:scale-125"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p class="text-gray-500 text-xs">&copy; 2026 Class Dynamitech 5 SMAN 1 Purwakarta. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="fixed inset-0 z-[100] hidden bg-black/80 flex items-center justify-center p-4 backdrop-blur-md">
+        <div class="glass-panel border border-cyan-500/50 rounded-2xl p-6 w-full max-w-md shadow-2xl">
+            <h3 class="text-xl font-bold text-white mb-2">Tambah Foto Baru</h3>
+            <p class="text-xs text-gray-400 mb-4">Masukkan jalur file (contoh: FOTO/namafoto.jpeg)</p>
+            <input type="text" id="imgUrlInput" placeholder="FOTO/namafoto.jpeg" class="w-full bg-navy-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 text-sm mb-6">
+            
+            <div class="flex justify-end gap-3">
+                <button onclick="document.getElementById('uploadModal').classList.add('hidden')" class="px-4 py-2 text-gray-400 hover:text-gray-200 text-sm">Batal</button>
+                <button onclick="addNewPhoto()" class="px-5 py-2 bg-cyan-500 text-navy-900 font-bold rounded-xl hover:bg-cyan-400 text-sm active:scale-95">Simpan Foto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const members = [
+            { id: 1, name: "Akbar Maulana", igName: "@akbarmnn", igUrl: "https://www.instagram.com/akbarmnn?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/akbar.jpeg" },
+            { id: 2, name: "Alif Rafka Vabyan", igName: "@vabyanalif", igUrl: "https://www.instagram.com/vabyanalif?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/alif.jpeg" },
+            { id: 3, name: "Almira Bintang Jessica", igName: "@inialmiira", igUrl: "https://www.instagram.com/inialmiira?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/almira.jpeg" },
+            { id: 4, name: "Andra Anugrah Pratama", igName: "@dra.rapprtm", igUrl: "https://www.instagram.com/dra.rapprtm?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/andra.jpeg" },
+            { id: 5, name: "Archelick Effendi Putra", igName: "@archelickeff", igUrl: "https://www.instagram.com/archelickeff?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/archel.jpeg" },
+            { id: 6, name: "Azriel Muzakki Nail", igName: "@muzakkinailll", igUrl: "https://www.instagram.com/muzakkinailll?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/azriel.jpeg" },
+            { id: 7, name: "Denis Althaf Khairan", igName: "@knnedytwenty", igUrl: "https://www.instagram.com/knnedytwenty?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/dennis.jpeg" },
+            { id: 8, name: "Erlangga Aditya Suhada", igName: "@adtt_aduttt", igUrl: "https://www.instagram.com/adtt_aduttt?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/erlangga.jpeg" },
+            { id: 9, name: "Fakhri Khaizuran Absyar", igName: "@fkhriika_", igUrl: "https://www.instagram.com/fkhriika_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/fakhri.jpeg" },
+            { id: 10, name: "Ghaesan Arreiko Gani", igName: "@gesanpt.1", igUrl: "https://www.instagram.com/gesanpt.1?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/ghaesan.jpeg" },
+            { id: 11, name: "Gladysha Zahrah", igName: "@zzhrraisle", igUrl: "https://www.instagram.com/zzhrraisle?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/gladysha.jpeg" },
+            { id: 12, name: "Heizmy Gursylfa", igName: "@heizgrylf__", igUrl: "https://www.instagram.com/heizgrylf__?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/heizmy.jpeg" },
+            { id: 13, name: "Lestari Desiani", igName: "@lstrdsniii", igUrl: "https://www.instagram.com/lstrdsniii?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/lestari.jpeg" },
+            { id: 14, name: "Muhamad Abdul Rajab", igName: "@j4b.4r_", igUrl: "https://www.instagram.com/j4b.4r_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/abdulrajab.jpeg" },
+            { id: 15, name: "Muhamad Refauzan Rizki", igName: "@rifqi.zann", igUrl: "https://www.instagram.com/rifqi.zann?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/refauzan.jpeg" },
+            { id: 16, name: "Muhammad Almas Fayyadh", igName: "@almas_fayyadh", igUrl: "https://www.instagram.com/almas_fayyadh?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/almas.jpeg" },
+            { id: 17, name: "Muhammad Aqila Dafa Arrafi", igName: "@dafaarrafi_", igUrl: "https://www.instagram.com/dafaarrafi_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/aqila.jpeg" },
+            { id: 18, name: "Muhammad Jovan Aditya", igName: "@j.vaan72", igUrl: "https://www.instagram.com/j.vaan72?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/jovan.jpeg" },
+            { id: 19, name: "Muhammad Saleh", igName: "@saleh", igUrl: "#", img: "FOTO/FOTO ANAK KELAS/saleh.jpeg" },
+            { id: 20, name: "Myiesha Oktariani Djuanda", igName: "@myieeesha_", igUrl: "https://www.instagram.com/myieeesha_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/myiesha.jpeg" },
+            { id: 21, name: "Natasha Kirana Sunjali", igName: "@ntashakiranaa", igUrl: "https://www.instagram.com/ntashakiranaa?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/natasha.jpeg" },
+            { id: 22, name: "Nhyon Nathanael Sitorus", igName: "@nhyon", igUrl: "#", img: "FOTO/FOTO ANAK KELAS/nhyon.jpeg" },
+            { id: 23, name: "Pambudi Dewo Subagja", igName: "@pambudi_dewo", igUrl: "https://www.instagram.com/pambudi_dewo?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/pambudidewo.jpeg" },
+            { id: 24, name: "Pramudya Satya Aqilla", igName: "@pramudya", igUrl: "#", img: "FOTO/FOTO ANAK KELAS/pramudya.jpeg" },
+            { id: 25, name: "R. Alma Alfina Raihanah", igName: "@r.almajh", igUrl: "https://www.instagram.com/r.almajh?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/r.alma.jpeg" },
+            { id: 26, name: "Razaan Fadhilah", igName: "@raznf_", igUrl: "https://www.instagram.com/raznf_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/razaan.jpeg" },
+            { id: 27, name: "Reina Khansa Purnama", igName: "@reinlunaire", igUrl: "https://www.instagram.com/reinlunaire?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/reina.jpeg" },
+            { id: 28, name: "Rifqi Fauzan", igName: "@rifqi.zann", igUrl: "https://www.instagram.com/rifqi.zann?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/rifqi.jpeg" },
+            { id: 29, name: "Rika Maelani", igName: "@rika", igUrl: "#", img: "FOTO/FOTO ANAK KELAS/rika.jpeg" },
+            { id: 30, name: "Rizky Anugrah", igName: "@rkzzyh", igUrl: "https://www.instagram.com/rkzzyh?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/rizky.jpeg" },
+            { id: 31, name: "Rusli Muhammad Nasyir", igName: "@rslieee_", igUrl: "https://www.instagram.com/rslieee_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/rusli.jpeg" },
+            { id: 32, name: "Salma Fitri Haura", igName: "@salmafhaura", igUrl: "https://www.instagram.com/salmafhaura?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/salma.jpeg" },
+            { id: 33, name: "Satria Royyan Prawira", igName: "@satria.royyan", igUrl: "https://www.instagram.com/satria.royyan?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/satria.jpeg" },
+            { id: 34, name: "Shofia Lestari Efendi", igName: "@shoeefdd_", igUrl: "https://www.instagram.com/shoeefdd_?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/shofia.jpeg" },
+            { id: 35, name: "Syifa An Naafi Fawwaz Azhar", igName: "@syfawwzhar", igUrl: "https://www.instagram.com/syfawwzhar?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/syifa.jpeg" },
+            { id: 36, name: "Zhya Ulhaq", igName: "@zhyaa.hq", igUrl: "https://www.instagram.com/zhyaa.hq?stkn=MWFqZGl5aHVsd2Q0Nw==", img: "FOTO/FOTO ANAK KELAS/zhya.jpeg" }
+        ];
+
+        function getInitials(name) {
+            return name.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase();
+        }
+
+        const membersContainer = document.getElementById('members-container');
+        members.forEach(member => {
+            const fallbackHTML = `<div class='w-20 h-20 rounded-full mx-auto mb-3 bg-gradient-to-br from-cyan-600 to-purple-900 text-cyan-200 flex items-center justify-center text-2xl font-bold border-2 border-cyan-400 shadow-md'>${getInitials(member.name)}</div>`;
+            
+            const card = document.createElement('div');
+            card.className = "glass-panel p-4 rounded-2xl text-center hover:-translate-y-2 transition-transform duration-300 group cursor-pointer";
+            card.innerHTML = `
+                <div class="relative inline-block">
+                    <img src="${member.img}" alt="${member.name}" 
+                         class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border-2 border-cyan-400/50 group-hover:border-cyan-400 transition transform group-hover:scale-105"
+                         onerror="this.onerror=null; this.outerHTML=\`${fallbackHTML}\`">
+                    <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-cyan-500 text-navy-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+                        ${member.id}
+                    </div>
+                </div>
+                <h3 class="font-bold text-sm text-gray-200 line-clamp-2 mt-2 leading-tight" title="${member.name}">${member.name}</h3>
+                <a href="${member.igUrl}" target="_blank" class="inline-block text-xs text-cyan-400 hover:text-cyan-300 hover:underline mt-1 font-medium">
+                    <i class="fab fa-instagram mr-1"></i>${member.igName}
+                </a>
+            `;
+            membersContainer.appendChild(card);
+        });
+
+        // --- SLIDER GALERI ---
+        let defaultGallery = [
+            { url: "FOTO/IMG-20260820-WA0126.jpg" },
+            { url: "FOTO/IMG-20260824-WA0032.jpg" },
+            { url: "FOTO/IMG-20261002-WA0159.jpg" },
+            { url: "FOTO/IMG-20261002-WA0186.jpg" },
+            { url: "FOTO/IMG-20261002-WA0192.jpg" },
+            { url: "FOTO/IMG-20260824-WA0030.jpg" },
+            { url: "FOTO/IMG-20260824-WA0033.jpg" },
+            { url: "FOTO/IMG-20260918-WA0007.jpg" },
+            { url: "FOTO/IMG-20261002-WA0080.jpg" },
+            { url: "FOTO/IMG-20261002-WA0086.jpg" },
+            { url: "FOTO/IMG-20261002-WA0155.jpg" },
+            { url: "FOTO/IMG-20261002-WA0185.jpg" }
+        ];
+
+        let galleryPhotos = JSON.parse(localStorage.getItem('f5_gallery')) || defaultGallery;
+        let currentSlide = 0;
+
+        function renderSlider() {
+            const screen = document.getElementById('slider-screen');
+            const dotsContainer = document.getElementById('slider-dots');
+            const emptyMsg = document.getElementById('empty-gallery-msg');
+            
+            screen.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            if (galleryPhotos.length === 0) {
+                emptyMsg.classList.remove('hidden');
+                return;
+            } else {
+                emptyMsg.classList.add('hidden');
+            }
+
+            if (currentSlide >= galleryPhotos.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = galleryPhotos.length - 1;
+
+            const photo = galleryPhotos[currentSlide];
+            const imgElement = document.createElement('div');
+            imgElement.className = "w-full h-full flex items-center justify-center p-2 transition-all duration-500";
+            imgElement.innerHTML = `
+                <img src="${photo.url}" alt="Memory Dynamitech 5" class="max-h-full max-w-full object-contain rounded-xl shadow-2xl border border-cyan-500/20">
+                <span class="absolute bottom-4 right-6 bg-navy-900/90 border border-cyan-500/30 text-cyan-400 px-3 py-1 rounded-full text-xs font-semibold shadow">
+                    ${currentSlide + 1} / ${galleryPhotos.length}
+                </span>
+            `;
+            screen.appendChild(imgElement);
+
+            galleryPhotos.forEach((_, idx) => {
+                const dot = document.createElement('button');
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${idx === currentSlide ? 'bg-cyan-400 w-8 shadow-[0_0_10px_rgba(56,189,248,0.8)]' : 'bg-gray-600 hover:bg-gray-400'}`;
+                dot.onclick = () => {
+                    currentSlide = idx;
+                    renderSlider();
+                };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % galleryPhotos.length;
+            renderSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + galleryPhotos.length) % galleryPhotos.length;
+            renderSlider();
+        }
+
+        function addNewPhoto() {
+            const urlInput = document.getElementById('imgUrlInput').value;
+            if(urlInput.trim() !== '') {
+                galleryPhotos.push({ url: urlInput });
+                localStorage.setItem('f5_gallery', JSON.stringify(galleryPhotos));
+                currentSlide = galleryPhotos.length - 1;
+                renderSlider();
+                document.getElementById('uploadModal').classList.add('hidden');
+                document.getElementById('imgUrlInput').value = '';
+            } else {
+                alert("Masukkan jalur file foto yang valid (contoh: FOTO/namafoto.jpg).");
+            }
+        }
+
+        function deleteCurrentPhoto() {
+            if(galleryPhotos.length === 0) return;
+            if(confirm("Hapus foto yang sedang tampil ini dari galeri?")) {
+                galleryPhotos.splice(currentSlide, 1);
+                localStorage.setItem('f5_gallery', JSON.stringify(galleryPhotos));
+                if (currentSlide >= galleryPhotos.length) {
+                    currentSlide = Math.max(0, galleryPhotos.length - 1);
+                }
+                renderSlider();
+            }
+        }
+
+        // --- BUKU KESAN ---
+        let guestMessages = JSON.parse(localStorage.getItem('f5_messages')) || [
+            { name: "Jovan (KM)", msg: "Tetap kompak terus buat Dynamitech 5 sampai lulus bareng-bareng!" },
+            { name: "Rizky", msg: "Kelas paling seru dan pecah selama di SMAN 1 Purwakarta!" }
+        ];
+
+        function renderGuestbook() {
+            const container = document.getElementById('guestbook-container');
+            container.innerHTML = '';
+            guestMessages.slice().reverse().forEach(item => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-4 rounded-xl border border-cyan-500/20 transition-all hover:border-cyan-400/50";
+                card.innerHTML = `
+                    <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-bold text-cyan-400 text-sm">${item.name}</h4>
+                    </div>
+                    <p class="text-gray-300 text-sm">${item.msg}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addGuestMessage() {
+            const name = document.getElementById('guestName').value;
+            const msg = document.getElementById('guestMsg').value;
+            if(name.trim() !== '' && msg.trim() !== '') {
+                guestMessages.push({ name, msg });
+                localStorage.setItem('f5_messages', JSON.stringify(guestMessages));
+                renderGuestbook();
+                document.getElementById('guestName').value = '';
+                document.getElementById('guestMsg').value = '';
+            } else {
+                alert("Mohon isi nama dan pesan terlebih dahulu.");
+            }
+        }
+
+        renderSlider();
+        renderGuestbook();
+    </script>
+</body>
+</html>
